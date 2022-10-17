@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block title_pagina %}
+<title>VER PERSONAS </title>
+{% endblock title_pagina %}       
+
+{% block mi_contenido %}
+    <p> 
+        {% if personas %}
+        {% for persona in personas %}
+        <li>
+            {{persona.apellido}} , {{persona.nombre}} - {{persona.edad}} --> {{persona.fecha_alta}} 
+        </li>
+        {% endfor %}
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"></h4>
+                    <p>NO ENCONTRADO</p>
+                    <p class="mb-0"></p>
+            </div>
+        {% endif %}
+    </p>
+{% endblock mi_contenido %}
