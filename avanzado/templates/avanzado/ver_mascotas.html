@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+
+{% block title_pagina %}
+<title>VER MASCOTAS </title>
+{% endblock title_pagina %}       
+
+{% block mi_contenido %}
+    <div class="container p-5 my-5 border">
+        {% if mascotas %}
+        {% for mascota in mascotas %}
+      
+        <li>
+                {{mascota}}
+        </li>                
+        
+                <div class="btn-group btn-group-sm">
+                    <a class="btn btn-success" href={% url 'editar_mascota' mascota.id %}>Editar</a>
+                    <a class="btn btn-danger" href={% url 'eliminar_mascota' mascota.id %}>Borrar</a>
+                  </div>
+      
+        {% endfor %}
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"></h4>
+                    <p>NO ENCONTRADO</p>
+                    <p class="mb-0"></p>
+            </div>
+        {% endif %}
+        </div>
+{% endblock mi_contenido %}

@@ -9,7 +9,7 @@ from django.template import Context, Template, loader
 from django.shortcuts import render, redirect
 import random
 from home.models import Persona
-from home.fomrs import PersonaFomulario, BusquedaPersonaFomulario
+from home.forms import PersonaFomulario, BusquedaPersonaFomulario
 
 def fecha(request):
     fecha_y_hora = datetime.now()
@@ -43,8 +43,11 @@ def crear_persona(request):
             nombre = data['nombre']
             apellido = data['apellido']
             edad = data['edad']
-            fecha_alta= data.get('fecha_creacion',datetime.now())
-       
+            fecha_alta= data['fecha_alta']
+            
+            if not fecha_alta:
+               fecha_alta = datetime.now()
+                 
             persona = Persona(nombre=nombre, 
                             apellido=apellido, 
                             edad=edad,

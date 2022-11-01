@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{% block title_pagina %}
+<title>EDITAR MASCOTAS </title>
+{% endblock title_pagina %}       
+
+{% block mi_contenido %}
+    <form action="{% url 'editar_mascota' mascota.id %}" method="POST">
+        {% csrf_token %}
+        <table class="table">
+            {{formulario}}
+        </table>
+        <input type="submit" class="btn btn-primary btn-sm" value="Editar">        
+    </form>
+{% endblock mi_contenido %}

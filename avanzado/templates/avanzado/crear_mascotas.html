@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block title_pagina %}
+<title>CREAR MASCOTAS </title>
+{% endblock title_pagina %}       
+
+{% block mi_contenido %}
+    <form action="{% url 'crear_mascota' %}" method="POST">
+        {% csrf_token %}
+        <table class="table">
+            {{formulario}}
+        </table>
+        <input type="submit" class="btn btn-primary btn-sm" value="Crear">        
+    
+    </form>
+{% endblock mi_contenido %}
